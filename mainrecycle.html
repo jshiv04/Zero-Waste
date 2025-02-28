@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycle Reboot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Recycle Reboot</h1>
+  </header>
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mainrecycle.html">Recycle</a></li>
+      <li><a href="reuse.html">Reuse</a></li>
+      <li><a href="donate.html">Donate Hub</a></li>
+      <li><a href="submissions.html">Submissions</a></li>
+      <li><a href="index.html#ABOUT">About</a></li>
+    </ul>
+  </nav>
+  <br><br>
+  <section class="container">
+    <h2>What products do you wish to recycle?</h2>
+    <form id="recycleForm">
+      <input type="checkbox" id="plastics" name="plastics" value="Plastics">
+      <label for="plastics">Plastics Waste</label><br>
+      <input type="checkbox" id="paper" name="paper" value="Paper">
+      <label for="paper">Paper Waste</label><br>
+      <input type="checkbox" id="fabrics" name="fabrics" value="Fabrics">
+      <label for="fabrics">Fabrics Waste</label><br>
+      <input type="checkbox" id="others" name="others" value="Others">
+      <label for="others">Others</label><br>
+      <input type="text" id="othersInput" name="othersInput" placeholder="Specify other waste"><br>
+      <h3 id="demo"></h3>
+      <button type="button" id="submitButton">Submit</button>
+    </form>
+  </section>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="margin-top: 50px;"><b>Give a chance to your products to be refurbished and sold!</b></h2>
+      <div id="imageContainer"></div>
+      
+      <button id="reuse" style="padding: 8px 16px;
+      font-size: 14px;">Proceed to Reuse marketplace</button>
+      <p>or</p>
+      <button id="recycle" style="padding: 8px 16px;
+      font-size: 14px;">SKIP</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+  <script src="scriptshivani.js"></script>
+</body>
+</html>

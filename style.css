@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+body {
+    font-family:Arial, Helvetica, sans-serif  ;
+    
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:#4CAF50;
+    padding: 20px 0;
+    height: 120px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+
+/* Styles for the search bar */
+nav form {
+    display: inline-block;
+}
+
+
+
+nav button[type="submit"] {
+    padding: 6px 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+nav button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size:20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: border-bottom 0.3s ease;
+}
+
+nav ul li a:hover {
+    border-bottom: 2px solid #388E3C;
+}
+
+main {
+    min-height: 100vh;
+    padding-top: 50px;
+}
+
+#ABOUT {
+    background-color: #f5f5f5; /* Light gray background */
+    padding: 50px; /* Add padding for spacing */
+}
+
+.left-half {
+    text-align: center; /* Align text to the center */
+    margin: 0 auto; /* Center the content horizontally */
+    max-width: 600px; /* Limit the width of the content */
+}
+
+.left-half h2 {
+    font-size: 30px; /* Adjust font size */
+    margin-bottom: 20px; /* Add space below heading */
+}
+
+.left-half h3, .left-half h4 {
+    margin-top: 10px; /* Add space above subheadings */
+    margin-bottom: 5px; /* Add space below subheadings */
+}
+
+.left-half p {
+    margin-bottom: 20px; /* Add space below paragraphs */
+    line-height: 1.5; /* Increase line height for better readability */
+}
+
+
+
+
+.members {
+    display: flex;
+    justify-content: center;
+}
+
+.member-image {
+    margin: 0 10px;
+}
+
+.member-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid darkgreen;
+    transition: transform 0.3s ease;
+}
+
+.member-image img:hover {
+    transform: scale(1.1);
+}
+
+
+#hero {
+    position: relative;
+    text-align: center;
+    height: 100vh; /* Set hero section height to viewport height */
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+    background-image: url('main_page.jpg');
+    background-size: cover; /* Ensure the background image covers the entire hero section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+}
+
+/*
+#hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 1; 
+}*/
+
+
+#hero {
+    position: relative;
+    text-align: center;
+    height: 100vh; /* Set hero section height to viewport height */
+    overflow: hidden; /* Hide overflow to prevent scrolling */
+    background-image: url("Screenshot 2024-03-20 141716.png");
+    background-size: cover; /* Ensure the background image covers the entire hero section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    opacity: 0.5;; /* Set background color with opacity */
+}
+
+#hero .container {
+    position: relative;
+    z-index: 1; /* Ensure text appears on top of the image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.strikethrough {
+    background-image: linear-gradient(to right, red, red); /* Use linear gradient to create a red line */
+    background-position: 0% 50%; /* Position the line in the middle vertically */
+    background-size: 100% 2px; /* Set the size of the line (2px height) */
+    background-repeat: no-repeat; /* Prevent the line from repeating */
+    padding-bottom: 2px; /* Adjust padding to make space for the line */
+}
+.highlight {
+    font-size: 1.2em; /* Set larger font size */
+    color: green; /* Set text color to green */
+    font-family: 'Arial', sans-serif; /* Apply a nice font style */
+}
+
+
+
+#hero h1 {
+    color: black;
+    font-family: 'Lobster', cursive; /* Change the font-family to a cursive font */
+    font-size: 70px;
+}
+
+.about {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20vh; /* Adjust margin from top as needed */
+}
+
+#platforms {
+    text-align: center;
+    padding: 50px 0;
+    background-color: beige;
+}
+
+.container .platform-box {
+    display: inline-block;
+    width: calc(30% - 20px); /* Adjusted width to ensure three boxes fit horizontally with margin */
+    margin: 20px 10px; /* Added margin between the boxes */
+    background-color: #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Added color transition */
+}
+
+.container .platform-box:hover {
+    background-color: #388E3C;
+    color: #fff; /* Change text color on hover */
+}
+
+.container .platform-box a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.container .platform-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    opacity: 0.9; /* Adjusted opacity */
+}

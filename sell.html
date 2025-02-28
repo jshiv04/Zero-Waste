@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell Your Refurbished Product</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffe0; /* Whitish-yellow background */
+    }
+    .header {
+        background-color: #45a049;
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Adding shadow effect */
+    }
+    h1 {
+    font-family: 'Pacifico', cursive;
+    font-weight: bold; /* Adjust weight if needed */
+    font-size: 3em; /* Adjusts size as needed */
+    color: #f9f3e4; /* Adjusts color as needed */
+    margin-top: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+  }
+
+    .form-container {
+      background-color: #e2e7bb;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"] {
+     width: calc(100% - 30px); /* Adjusting width to accommodate the rupee symbol */
+     padding: 5px;
+     margin-top: 5px;
+     padding-left: 30px; /* Add padding for rupee symbol */
+     border: 1.5px solid #006400; /* Dark green border */
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="file"]:focus {
+     outline: none;
+     border-color: #004d00; /* Darker green border on focus */
+    }
+
+
+    .rupee-symbol {
+      position: relative;
+      right:10px ;/* Adjust the position for rupee symbol */
+      bottom: 50%;
+      transform: translateY(-110%);
+    }
+
+    button[type="submit"] {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #45a049;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    #popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      font-size: 24px;
+      display: none;
+    }
+
+    #close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-button button {
+      padding: 10px 20px;
+      background-color: #45a049;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .back-button button:hover {
+      background-color:#45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Sell Your Refurbished Product</h1>
+  </div>
+
+  <div class="form-container">
+    <form id="sell-form" action="/sell" method="POST" enctype="multipart/form-data">
+      <!-- Your form fields -->
+      <label for="product-name">Product Name:</label>
+      <input type="text" id="product-name" name="product-name" required>
+
+      <label for="product-material">Material:</label>
+      <input type="text" id="product-material" name="product-material" required>
+
+      <label for="product-description">Description (max 50 characters):</label>
+      <input type="text" id="product-description" name="product-description" maxlength="50" required>
+
+      <label for="product-price">Price:</label>
+      <input type="text" id="product-price" name="product-price" required>
+      <div class="rupee-symbol">&#8377;</div>
+
+      <label for="product-photos">Product Photo:</label>
+      <input type="file" id="product-photos" name="product-photos" multiple required>
+      <p id="photo-note">Note: Please upload a clear photo of your product.</p>
+
+      <div id="image-preview"></div> <!-- Container for image preview -->
+
+      <button type="submit">Finish</button>
+    </form>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup">
+    <span id="close-btn">&times;</span>
+    THANK YOU!! We will contact you soon for the Quality check of your product <span>&#128522;</span>
+  </div>
+
+  <div class="back-button">
+    <button onclick="goBack()">Back</button>
+  </div>
+
+  <script>
+    document.getElementById('product-photos').addEventListener('change', function(event) {
+      var files = event.target.files; // Get the selected files
+      var imagePreviewContainer = document.getElementById('image-preview'); // Get the image preview container
+
+      // Clear previous image previews
+      imagePreviewContainer.innerHTML = '';
+
+      // Iterate through selected files
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+
+        // Check if the selected file is an image
+        if (file.type.match('image.*')) {
+          var reader = new FileReader(); // Create a new FileReader object
+
+          // Function to handle FileReader onload event
+          reader.onload = function(event) {
+            var img = document.createElement('img'); // Create an img element
+            img.src = event.target.result; // Set the src attribute of the img element to the data URL
+            img.style.maxWidth = '100%'; // Set max-width to ensure the image fits within the container
+            imagePreviewContainer.appendChild(img); // Append the img element to the image preview container
+          };
+
+          reader.readAsDataURL(file); // Read the selected file as a data URL
+        }
+      }
+    });
+    document.getElementById('sell-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      document.getElementById('popup').style.display = 'block'; // Show popup
+    });
+
+    document.getElementById('close-btn').addEventListener('click', function() {
+      document.getElementById('popup').style.display = 'none'; // Hide popup when close button is clicked
+    });
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>

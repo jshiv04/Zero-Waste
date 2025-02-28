@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recycling</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <header>
+    <h1>Recycling Form</h1>
+  </header> 
+  <br><br>
+  <section class="container">
+    
+    <p><mark>Enter zero if you are not recycling the product!</mark></p>
+    <form id="recycleForm">
+      <label for="plasticQuantity">Plastic Quantity(in grams):</label><br>
+      <input type="number" id="plasticQuantity" name="plasticQuantity" min="0" required><br><br>
+      
+      <label for="paperQuantity">Paper Quantity:(in kilograms)</label><br>
+      <input type="number" id="paperQuantity" name="paperQuantity" min="0" required><br><br>
+      
+      <label for="fabricQuantity">Fabric Quantity:(in grams)</label><br>
+      <input type="number" id="fabricQuantity" name="fabricQuantity" min="0" required><br><br>
+
+      <label for="otherQuantity">Other Quantity:(in grams)</label><br>
+      <input type="number" id="otherQuantity" name="otherQuantity" min="0" required><br><br>
+      
+      <h3 id="totalQuantity"></h3>
+      
+      <pre>Let us know your UPI ID for
+crediting the money in your bank account!
+It will be processes in 1 or 2 business days!</pre>
+      <label for="upiId">UPI ID:</label><br>
+      <input type="text" id="upiIdInput" oninput="validateUPI()">
+  <p id="upiIdErrorMessage" style="color: red;"></p>
+      
+
+      <button type="button" id="proceedToPay" onclick="submitForm()">Submit</button><br><br>
+      <a href="mainrecycle.html"><button type="button">Back</button></a>
+      
+    </form>
+  </section>
+ 
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Your response has reached us!Sit back and relax</h2>
+      <p style="font-size:30px">The delivery agent will come to your home on the scheduled pickup time.</p>
+      <p>For more information dont hesitate to call us at+91 9790664356</p>
+      <img src="congrats.png">
+      <p style="margin-bottom: 50px;">You have contributed your part toward a better ,greener world</p>
+      <p style="font-size:20px">Congratulations!You earn 3 <span style="color:chartreuse">GREENO</span> credits!</p>
+      <div class="submitted-data">
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/appwrite@13.0.1"></script>
+<script src="scriptshivani.js"></script>
+
+</body>
+</html>

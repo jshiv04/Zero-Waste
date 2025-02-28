@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Now</title>
+  <link rel="stylesheet" href="donatehub.css">
+</head>
+<body>
+  <header>
+    <h1>Donate <span class="highlight">Now</span> and contribute your part</h1>
+  </header>
+  <section class="container">
+    <form id="donationForm">
+      <div class="left-half">
+        <label for="amount">Enter the type of product you are willing to donate:</label>
+        <input type="text" id="productType" name="productType" required>
+
+        <label for="fullname">Your Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+
+        <label for="email">Your Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Optional Message (e.g., Purpose of Donation):</label>
+        <textarea id="message" name="message" rows="4" placeholder="Write a message to share your purpose or special instructions"></textarea>
+        <div class="right-half">
+            <label for="imageUpload">Upload Images (only 1 clear image):</label>
+            <input type="file" id="imageUpload" name="imageUpload" accept="image/*" multiple>
+            <div id="imagePreview"></div>
+          </div>
+        <button type="submit">Donate Now</button>
+      </div>
+      
+    </form>
+  </section>
+
+  <script src="donate.js"></script>
+</body>
+</html>

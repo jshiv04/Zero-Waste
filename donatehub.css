@@ -1,0 +1,189 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EAF6E5; /* Light green background */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #EAF6E5; /* Light green background */
+}
+
+header {
+    background-color: #4CAF50; /* Green header background */
+    padding: 20px 0;
+    text-align: center;
+    position: relative; /* Position header relative for absolute positioning */
+}
+
+h1 {
+    color: white;
+    font-size: 48px;
+    margin: 0;
+    font-family: 'Arial Black', sans-serif; /* Change font style for header */
+    letter-spacing: 2px; /* Add letter spacing for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow for depth */
+}
+
+/* Add animation to header title */
+@keyframes scaleIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+h1 {
+    animation: scaleIn 0.5s ease-out;
+}
+
+.container {
+    width:50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically */
+}
+
+.logo {
+    position: absolute; /* Position logo absolutely within header */
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.logo img {
+    width: 80px;
+    height: auto;
+}
+
+.navbar {
+    position: relative; /* Position navbar relatively for absolute positioning */
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'Arial', sans-serif; /* Fallback font */
+    transition: color 0.3s ease; /* Add transition for smooth color change */
+}
+
+.navbar ul li a:hover {
+    color: #3498db; /* Change text color on hover */
+}
+
+
+
+
+header {
+    background-color: #4CAF50; /* Green header background */
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 36px;
+    margin: 0;
+    font-family:'Roboto', sans-serif; /* Change font style to cursive */
+}
+
+.highlight {
+    font-family:'Roboto', sans-serif; /* Change font style for highlighting */
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row-reverse; /* Change direction to reverse */
+    justify-content: space-between; /* Ensure the halves are spaced apart */
+}
+
+.left-half {
+    width: calc(20%- 5px); /* Adjusted width to account for padding and margin */
+    padding-right: 10px;
+}
+
+.right-half {
+    width: calc(30% - 5px); /* Adjusted width to account for padding and margin */
+    padding-left: 10px;
+}
+
+/* Add margin between left and right halves */
+.left-half,
+.right-half {
+    margin-bottom: 20px;
+}
+
+
+label {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #4CAF50; /* Green label text */
+    font-family: 'Verdana', sans-serif;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: calc(100% - 24px); /* Adjust width */
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+textarea::placeholder {
+    color: #888; /* Light gray placeholder text */
+}
+
+button {
+    padding: 12px 24px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s ease;
+    
+    display: block; /* Ensure the button takes full width by default */
+    width: fit-content; /* Set button width to fit its content */
+    margin: 0 auto; /* Center align the button */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+input[type="file"] {
+    margin-top: 5px;
+    width: calc(100% - 24px);
+}
+
+#imagePreview img {
+    margin-top: 10px;
+    max-width: 100px; /* Set maximum width for preview images */
+    height: auto;
+    display: block;
+}

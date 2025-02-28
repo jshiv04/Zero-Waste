@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Input Form</title>
+    <style>
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .box {
+        width: 45%;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 20px;
+      }
+      .box input[type="text"] {
+        width: calc(100% - 20px);
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      .box textarea {
+        width: calc(100% - 20px);
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 5px;
+      }
+      .box button {
+        padding: 8px 16px;
+        background-color: #114700;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Styling for the map container */
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+
+      /* Styling for the recycling centers list */
+      #recyclingCenters {
+        margin-top: 20px;
+      }
+      #recyclingCenters ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      #recyclingCenters ul li {
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+      #recyclingCenters ul li button {
+        margin-top: 5px;
+      }
+      .box a.button-link {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #114700;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      .box a.button-link:hover {
+        background-color: #0d3600;
+      }
+    </style>
+  </head>
+  <body style="background-color: #b8ebba">
+    <!-- Container for the map -->
+    <div id="map"></div>
+
+    <!-- Container for recycling centers list -->
+    <div id="recyclingCenters"></div>
+
+    <div class="container">
+      <div class="box">
+        <h3>RECYCLING MART OPTION 1</h3>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value="Willys E-waste Recycling (TNPCB Authorized) Vellore"
+          readonly
+        />
+        <input
+          type="text"
+          placeholder="Enter email"
+          value="09363497200"
+          readonly
+        />
+        <textarea placeholder="Enter address" readonly>
+No 16/4, 16/5, Auto Nagar, Perumugai, Vellore, Tamil Nadu 632009</textarea
+        >
+        <a href="recycle.html" class="button-link">Select</a>
+      </div>
+      <div class="box">
+        <h3>RECYCLING MART OPTION 2</h3>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value="MICHY RUBBERS UNIT II"
+          readonly
+        />
+        <input
+          type="text"
+          placeholder="Enter email"
+          value="07358868138"
+          readonly
+        />
+        <textarea placeholder="Enter address" readonly>
+S.F.NO.109/6B2,109/6C, 109/5A2, Kugaiyanallore, Tamil Nadu 632515</textarea
+        >
+        <a href="recycle.html" class="button-link">Select</a>
+      </div>
+      <div class="box">
+        <h3>RECYCLING MART OPTION 3</h3>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value="RBS BOTTLE COMPANY"
+          readonly
+        />
+        <input
+          type="text"
+          placeholder="Enter email"
+          value="09487333263"
+          readonly
+        />
+        <textarea placeholder="Enter address" readonly>
+No.2/78, Pillayar Koil St, Konavattam, Vellore, Tamil Nadu 632013</textarea
+        >
+       <a href="recycle.html" class="button-link">Select</a>
+      </div>
+      <div class="box">
+        <h3>RECYCLING MART OPTION 4</h3>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value="Corporation Garbage Dump"
+          readonly
+        />
+        <input type="text" placeholder="Enter email" value="NA" readonly />
+        <textarea placeholder="Enter address" readonly>
+V4WR+44Q, Sainathapuram, RV Nagar, Vellore, Tamil Nadu 632001</textarea
+        >
+  <a href="recycle.html" class="button-link">Select</a>
+      </div>
+      <div class="box">
+        <h3>RECYCLING MART OPTION 5</h3>
+        <input
+          type="text"
+          placeholder="Enter name"
+          value="JLS ASSOCIATES"
+          readonly
+        />
+        <input type="text" placeholder="Enter email" value="NA" readonly />
+        <textarea placeholder="Enter address" readonly>
+384, 2D1, Vanapadi Rd, village, Ranipet, Tamil Nadu 632404</textarea
+    <a href="recycle.html" class="button-link">Select</a>
+      </div>
+    </div>
+
+    <script>
+      // Function to initialize the map
+      function initMap() {
+        // Create a map centered at a default location
+        var map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 0, lng: 0 }, // Default center
+          zoom: 12, // Default zoom level
+        });
+
+        // Try HTML5 geolocation
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+
+              // Center the map on the user's location
+              map.setCenter(pos);
+
+              // Create a marker at the user's location
+              var marker = new google.maps.Marker({
+                position: pos,
+                map: map,
+              });
+
+              // Use Google Places API to find nearby recycling centers
+              var service = new google.maps.places.PlacesService(map);
+              service.nearbySearch(
+                {
+                  location: pos,
+                  radius: 5000, // Search within 5000 meters
+                  keyword: "recycling center", // Search for recycling centers
+                },
+                function (results, status) {
+                  if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    console.log("Nearby recycling centers:", results);
+                    displayRecyclingCenters(results);
+                  } else {
+                    console.error(
+                      "Places API request failed with status:",
+                      status
+                    );
+                    document.getElementById("recyclingCenters").innerHTML =
+                      "No recycling centers found nearby.";
+                  }
+                }
+              );
+            },
+            function () {
+              handleLocationError(true, map.getCenter());
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, map.getCenter());
+        }
+      }
+
+      // Function to handle errors in geolocation
+      function handleLocationError(browserHasGeolocation, pos) {
+        var infoWindow = new google.maps.InfoWindow({
+          map: map,
+        });
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
+        );
+      }
+
+      // Function to display nearby recycling centers
+      function displayRecyclingCenters(places) {
+        var html = "<h3>Nearby Recycling Centers:</h3><ul>";
+        places.slice(0, 5).forEach(function (place) {
+          // Show only first 5 places
+          var name = place.name;
+          var address = place.vicinity;
+          var phone =
+            place.formatted_phone_number || "Phone number not available";
+          html +=
+            "<li><strong>" +
+            name +
+            "</strong><br>" +
+            address +
+            "<br>" +
+            phone +
+            "<br><button onclick='selectCenter(\"" +
+            name +
+            '", "' +
+            address +
+            "\")'>Select</button></li>";
+        });
+        html += "</ul>";
+        document.getElementById("recyclingCenters").innerHTML = html;
+      }
+
+      // Function to handle center selection
+      function selectCenter(name, address) {
+        // You can customize this function to redirect to different pages based on the selected center
+        console.log("Selected center:", name, address);
+        // Example redirection:
+        // window.location.href = "https://example.com/selected-center?name=" + encodeURIComponent(name) + "&address=" + encodeURIComponent(address);
+      }
+    </script>
+
+    <!-- Include Google Maps API script with your API key -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjbOYw__okNmuIflb_MqaYpuRoFSVw-HQ&callback=initMap"
+      async
+      defer
+    ></script>
+  </body>
+</html>

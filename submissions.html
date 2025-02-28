@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Submissions</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Recycling Form</h1>
+    </header> 
+    <br><br>
+    <h2>List of Submissions</h2>
+    <div id="documentList"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@13"></script>
+    <script>
+        const { Client, Databases, Query } = Appwrite;
+        const client = new Client();
+    
+        client
+            .setEndpoint('https://cloud.appwrite.io/v1')
+            .setProject('6627d17a708b0b4549c9');
+
+        const databases = new Databases(client);
+        const documentList = document.getElementById('documentList');
+
+        /*
+        const sortField = 'CreatedDateTime'; // Replace with the field name you want to sort on
+        const sortOrder = 'DESC'; // Use 'DESC' for descending order
+        const sortQuery = Query.order(sortField, sortOrder);
+        */
+
+        const promise = databases.listDocuments('6627d48b11903bca0210', '6627d4a497ca264a5c78',
+            [
+                Query.orderDesc('CreateDateTime'),
+            ]);
+
+        promise.then(function (response) {
+            // Success
+            documentList.innerHTML = ''; // Clear previous content
+
+            const table = document.createElement('table');
+            const headers = Object.keys(response.documents[0]);
+            const headerRow = document.createElement('tr');
+            
+            // Create table headers
+            headers.forEach(function(header) {
+                if (!header.startsWith('$')) { // Check if header doesn't start with "$"
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                }
+            });
+            table.appendChild(headerRow);
+
+            // Create table rows
+            response.documents.forEach(function(doc) {
+                const row = document.createElement('tr');
+                headers.forEach(function(header) {
+                    if (!header.startsWith('$')) { // Check if header doesn't start with "$"
+                        const cell = document.createElement('td');
+                        cell.textContent = doc[header];
+                        row.appendChild(cell);
+                    }
+                });
+                table.appendChild(row);
+            });
+
+            documentList.appendChild(table);
+        }, function (error) {
+            // Failure
+            console.log(error);
+        });
+    </script>
+</body>
+</html>
+

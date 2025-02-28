@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reuse Marketplace</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffe0;
+      
+    }
+    
+    header {
+      background-color: #4caf50;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      color: #f9f3e4; /* Adjusts color as needed */
+
+    }
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-weight: bold; /* Adjust weight if needed */
+      font-size: 3em; /* Adjusts size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    }
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-weight: bold; /* Adjust weight if needed */
+      font-size: 1.5em; /* Adjusts size as needed */
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .section-button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px;
+    }
+    .section-button:hover {
+      background-color: #45a049;
+    }
+    .container {
+      text-align: center;
+    }
+    .ideas-container {
+      display: none;
+    }
+    .ideas-container.active {
+      display: block;
+    }
+    .idea-image {
+      max-width: 80%;
+      height: auto;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    .idea-link {
+      display:inline-block;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+    .idea-link:hover {
+      background-color: #45a049;
+    }
+    .menu-icon {
+      font-size: 24px;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px; /* Increased width */
+        height: 100%;
+        background-color: #f2f2f2;
+        padding: 30px; /* Increased padding */
+        box-sizing: border-box;
+        transform: translateX(-250px); /* Adjust for increased width */
+        transition: transform 0.3s ease-in-out;
+}
+
+.menu.show {
+  transform: translateX(0);
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 20px; /* Increased gap between menu items */
+}
+
+.menu a {
+  color: #333;
+  text-decoration: none;
+  font-size: 18px; /* Increased font size */
+  font-weight: bold; /* Added font weight */
+  padding: 10px; /* Added padding for better click area */
+  transition: background-color 0.3s ease; /* Added transition for hover effect */
+}
+
+.menu a:hover {
+  background-color: #ddd;
+  color: #333;
+  border-radius: 5px;
+}   
+.slideshow-container {
+      max-width: 800px;
+      position: relative;
+      margin: auto;
+}
+.slide {
+  display: none;
+  height: 300px; /* Set a fixed height for the slides */
+}
+
+.slide img {
+  width: 100%; /* Make sure the image fills the width of its container */
+  height: 120%; /* Ensure the image fills the height of its container */
+  object-fit: cover; /* Prevent distortion by covering the entire space */
+}
+
+.sell-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease; /* Added transition for smooth scaling */
+}
+
+.sell-btn:hover {
+  background-color: #45a049;
+  transform: scale(1.2); /* Enlarge the button by 20% on hover */
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reuse Marketplace</h1>
+    <a href="sell.html" class="sell-btn">Sell your refurbished product</a>
+  </header>
+  <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+  <nav class="menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="mainrecycle.html">Recycle</a></li>
+      <li><a href="reuse.html">Reuse</a></li>
+      <li><a href="#">Donate Hub</a></li>
+      <li><a href="index.html#ABOUT">About</a></li>
+    </ul>
+  </nav>
+  <h2>Give your waste belongings a 2nd life</h2><br>
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="image1.jpg" alt="Image 1">
+    </div>
+    <div class="slide">
+      <img src="image2.jpg" alt="Image 2">
+    </div>
+    <div class="slide">
+      <img src="image3.jpg" alt="Image 3">
+    </div>
+    <div class="slide">
+        <img src="image4.jpg" alt="Image 3">
+    </div>
+    <div class="slide">
+        <img src="image5.jpg" alt="Image 3">
+    </div>
+    <div class="slide">
+        <img src="image6.jpg" alt="Image 3">
+    </div>
+  <div class="container">
+    <br><br><br><br><button class="section-button" onclick="showSection('plastic')">Plastic Reuse Ideas</button>
+    <button class="section-button" onclick="showSection('paper')">Paper Reuse Ideas</button>
+    <button class="section-button" onclick="showSection('fabric')">Fabric Reuse Ideas</button>
+    <div id="plastic-ideas" class="ideas-container">
+      <h2>Plastic Waste Reuse Ideas</h2>
+      <img class="idea-image" src="plastic_image.png" alt="Plastic Reuse Idea"><br>
+      <h2>You can look into these ideas</h2>
+      <a href="https://www.youtube.com/watch?v=77fFD3KVbvc" target="_blank" class="idea-link">Idea 1</a><br><br><br>
+    </div>
+    <div id="paper-ideas" class="ideas-container">
+      <h2>Paper Waste Reuse Ideas</h2>
+      <img class="idea-image" src="paper_image.png" alt="Paper Reuse Idea"><br>
+      <h2>You can look into these ideas</h2>
+      <a href="https://www.youtube.com/watch?v=9QqXzyllnS4" target="_blank" class="idea-link">Idea 1</a><br><br><br>
+    </div>
+    <div id="fabric-ideas" class="ideas-container">
+      <h2>Fabric Waste Reuse Ideas</h2>
+      <img class="idea-image" src="fabric_image.png" alt="Fabric Reuse Idea"><br>
+      <h2>You can look into these ideas</h2>
+      <a href="https://www.youtube.com/watch?app=desktop&v=dxNto3xgadw" target="_blank" class="idea-link">Idea 1</a><br>
+      <a href="https://www.youtube.com/watch?app=desktop&v=dxNto3xgadw" target="_blank" class="idea-link">Idea 2</a><br><br><br>
+    </div>
+  </div>
+  <script>
+    function showSection(section) {
+      var sections = document.querySelectorAll('.ideas-container');
+      sections.forEach(function(sectionElement) {
+        sectionElement.classList.remove('active');
+      });
+      document.getElementById(section + "-ideas").classList.add('active');
+    }
+
+  function toggleMenu() {
+  var menu = document.querySelector('.menu');
+  menu.classList.toggle('show');
+}
+document.addEventListener('click', function(event) {
+  var menu = document.querySelector('.menu');
+  var menuIcon = document.querySelector('.menu-icon');
+  var isClickInsideMenu = menu.contains(event.target) || menuIcon.contains(event.target);
+
+  if (menu.classList.contains('show') && !isClickInsideMenu) {
+    menu.classList.remove('show');
+  }
+});
+var slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      var slides = document.getElementsByClassName("slide");
+      for (var i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1;
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 2500); 
+}
+  </script>
+</body>
+</html>
